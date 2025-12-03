@@ -1,0 +1,181 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Roboto", sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 2.0;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 550;
+}
+.italic {
+  font-style: italic;
+}
+main {
+  margin: 0;
+  padding: 0;
+}
+/* ===== FLEXBOX BURGERMENU ===== */
+.menu-wrapper {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;               /* Flex container */
+  flex-direction: column;      /* Burger øverst, dropdown under */
+  align-items: flex-end;       /* Højrejuster alt */
+  gap: 0.4rem;
+  z-index: 999;
+}
+
+/* Burgermenu ikon (flex) */
+.burger {
+  width: 32px;
+  color: #DDB982;
+  display: flex;
+  flex-direction: column;      /* 3 linjer under hinanden */
+  justify-content: space-between;
+  height: 22px;
+  cursor: pointer;
+}
+
+.burger span {
+  height: 3px;
+  background: #6f5e3f;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+/* Dropdown, også flexbox */
+.dropdown {
+  display: flex;
+  flex-direction: column;      /* Links under hinanden */
+  background-color: white;
+  padding: 0.4rem 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  min-width: 150px;
+
+  opacity: 0;                  /* Skjult */
+  pointer-events: none;
+  transform: translateY(-5px);
+  transition: 0.2s ease;
+}
+
+/* Vis dropdown ved hover */
+.menu-wrapper:hover .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdown a{
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: #111;
+  font-size: 0.95rem;
+  background: #fafafa;
+}
+
+.dropdown a:hover {
+  background: #DDB982;
+}
+
+/* Animation ved hover */
+.menu-wrapper:hover .burger span:nth-child(1) {
+  transform: translateY(3px);
+}
+.menu-wrapper:hover .burger span:nth-child(3) {
+  transform: translateY(-3px);
+}
+
+/* ===== SEKTIONSSTYLING ===== */
+
+section {
+  height: 100vh;
+  padding: 80px 20px;
+}
+section:nth-child(odd) { background-color: #DDB982; }
+section:nth-child(even) { background-color: #FFECC9; }
+
+/* Alt til min top */
+.toppen {
+  background-image: url("img/min-top.jpg");
+    background-size: cover;
+    background-position: 85% center;
+    height: 100vh;
+}
+
+/* Tablet og op */
+@media (min-width: 768px) {
+  section {
+    padding: 100px 60px; 
+  }
+
+  body {
+    font-size: 18px;
+  }
+    .toppen {
+    background-position: 70% center;
+  }
+}
+/* Desktop og op */
+@media (min-width: 1024px) {
+  main {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  section {
+    padding: 120px 80px;
+  }
+    .toppen {
+    background-position: center center; /* fuldt udsnit */
+  }
+}
+
+
+ /* Alt til Om mig*/
+  .ommig {
+  display: flex;
+  flex-direction: column;   /* Mobil = elementer under hinanden */
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.about img {
+  width: 100%;              /* Fylder hele bredden på mobil */
+  border-radius: 8px;
+}
+@media (min-width: 768px) {
+  .about {
+    flex-direction: row;      /* Desktop = side om side */
+    align-items: center;
+  }
+
+  .about-image,
+  .about-text {
+    flex: 1;                  /* 2 lige store kolonner */
+  }
+
+  .about-text {
+    padding-left: 2rem;       /* Lidt luft mellem billede og tekst */
+  }
+}
+
