@@ -31,6 +31,11 @@ main {
   margin: 0;
   padding: 0;
 }
+
+p {
+  white-space: normal;
+  word-wrap: break-word;
+}
 /* ===== FLEXBOX BURGERMENU ===== */
 .menu-wrapper {
   position: fixed;
@@ -184,8 +189,9 @@ section:nth-child(even) { background-color: #FFECC9; }
     flex: 1;
     display: flex;
     flex-direction: column;
-    text-align: right;
+    text-align: left;
       margin-left: 5rem;
+      margin-right: 5rem;
   }
 
   /* her kan du tilpasse overskriften kun på desktop */
@@ -201,7 +207,7 @@ section:nth-child(even) { background-color: #FFECC9; }
 }
 
 /* ===== Portfolio ===== */
-.portfolio {
+.portfolio-video {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -234,14 +240,71 @@ section:nth-child(even) { background-color: #FFECC9; }
     max-width: 600px;
     padding: 3rem;
   }
-   .portfolio {
+   .portfolio-video {
     height: 100vh;
   }
 }
 
 /* Desktop */
-@media (min-width: 1024px){
+@media (min-width: 900px){
   .portfolio-content {
     max-width: 800px;
+  }
+}
+
+
+.portfolio-section {
+padding: 0rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  align-content: center;
+  gap: 0rem; /* luft mellem felterne */
+  grid-template-columns: repeat(2, 1fr);  /* 2 kolonner = 2 vandrette */
+
+    grid-template-areas:
+    "a b"
+    "c d"
+    "e f";
+}
+
+.tile {
+  background-color: #fafafa;
+}
+
+.tile img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tile-text {
+  display: flex;
+  flex-direction: column;   
+  justify-content: center;  
+  align-items: center;      
+  text-align: center;
+  color: #212529;
+  
+}
+
+.tile:nth-child(1) { grid-area: a; }
+.tile:nth-child(2) { grid-area: b; }
+.tile:nth-child(3) { grid-area: c; }
+.tile:nth-child(4) { grid-area: d; }
+.tile:nth-child(5) { grid-area: e; }
+.tile:nth-child(6) { grid-area: f; }
+
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0rem;
+
+    grid-template-areas:
+      "a c e"
+      "b d f";
   }
 }
